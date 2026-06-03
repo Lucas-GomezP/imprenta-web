@@ -1,11 +1,83 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import Hero from '../components/Hero.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const products = [
+	{
+		title: 'Impresiones',
+		description: 'Impresiones A4 en blanco y negro o color.',
+		image: '/impresiones_FOT_1.webp',
+		url: '/calculadoras/impresiones',
+	},
+	{
+		title: 'Stickers',
+		description: 'Stickers personalizados.',
+		image: '/stickers_FOT_1.webp',
+		url: '/calculadoras/stickers',
+	},
+	{
+		title: 'Etiquetas',
+		description: 'Etiquetas autoadhesivas.',
+		image: '/etiquetas_FOT_1.webp',
+		url: '/calculadoras/etiquetas',
+	},
+];
 ---
 
 <Layout>
-	<Welcome />
+	<Hero />
+
+	<section id="productos" class="py-16">
+		<div class="mx-auto max-w-7xl px-4">
+			<p class="text-center text-sm font-semibold uppercase tracking-wider text-green-600">
+				Nuestros productos
+			</p>
+
+			<h2 class="mt-2 text-center text-3xl font-bold">
+				Encontrá lo que necesitás
+			</h2>
+
+			<p class="mx-auto mt-4 max-w-2xl text-center text-gray-600">
+				Calculá tu presupuesto online y realizá tu pedido de forma rápida
+				por WhatsApp.
+			</p>
+			<div class="mt-10 mx-auto grid max-w-6xl gap-6 px-4 md:grid-cols-2 lg:grid-cols-4">
+				{
+					products.map((product) => (
+						<ProductCard
+						title={product.title}
+						description={product.description}
+						image={product.image}
+						calculatorUrl={product.url}
+						/>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section id="galeria">
+		<h3 class="text-center font-bold">Galeria de trabajos</h3>
+	</section>
+
+	<section>
+		<h3 class="text-center font-bold">Ventajas</h3>
+		<ul>
+			<li>Atencion personalizada</li>
+			<li>Entrega rapida</li>
+			<li>Pedidos pequenios y grandes</li>
+			<li>Presupuesto instantaneo</li>
+		</ul>
+	</section>
+
+	<section id="faq">
+		<h3 class="text-center font-bold">Preguntas frecuentes</h3>
+	</section>
+
+	<section>
+		<h3 class="text-center font-bold">Listo para hacer tu pedido?</h3>
+		<button>Calcular precio</button>
+		<button>Escribir por Whatsapp</button>
+	</section>
 </Layout>

@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image: string;
+  calculatorUrl: string;
+}
+
+const { title, description, image, calculatorUrl } = Astro.props;
+---
+
+<article class="overflow-hidden rounded-xl border shadow-md transition hover:shadow-lg">
+  <img
+    src={image}
+    alt={title}
+    class="h-48 w-full object-cover"
+  />
+
+  <div class="flex flex-col gap-3 p-4">
+    <h4 class="text-lg font-bold">{title}</h4>
+
+    <p class="text-sm text-gray-600">
+      {description}
+    </p>
+
+    <a
+      href={calculatorUrl}
+      class="rounded-lg bg-amber-300 px-4 py-2 text-center font-medium transition hover:bg-amber-400"
+    >
+      Calcular
+    </a>
+  </div>
+</article>
