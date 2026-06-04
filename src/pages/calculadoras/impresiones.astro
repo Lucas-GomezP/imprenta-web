@@ -1,0 +1,34 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import CalculadoraImpresion from "../../components/calculadoras/CalculadoraImpresion";
+
+const precios = {
+  bn: {
+    simple: 10,
+    doble: 18,
+  },
+  color: {
+    simple: 20,
+    doble: 35,
+  },
+};
+
+const anillados = [
+  {
+    maxHojas: 50,
+    precio: 500,
+  },
+  {
+    maxHojas: 100,
+    precio: 800,
+  },
+  {
+    maxHojas: 150,
+    precio: 1200,
+  },
+];
+---
+
+<Layout>
+  <CalculadoraImpresion client:load anillados={anillados} precios={precios}></CalculadoraImpresion>
+</Layout>

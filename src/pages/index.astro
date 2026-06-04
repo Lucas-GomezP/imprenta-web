@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import ProductCard from '../components/ProductCard.astro';
 import Hero from '../components/Hero.astro';
+import GalleryImage from '../components/GalleryImage.astro';
 
 const products = [
 	{
@@ -9,19 +10,67 @@ const products = [
 		description: 'Impresiones A4 en blanco y negro o color.',
 		image: '/impresiones_FOT_1.webp',
 		url: '/calculadoras/impresiones',
+	}
+];
+
+const gallery = [
+	"/g1.jfif",
+	"/g2.jfif",
+	"/g3.jfif",
+];
+
+const advantages = [
+	{
+		icon: "🤝",
+		title: "Atención personalizada",
+		description: "Cada pedido se revisa de forma individual para asegurar el mejor resultado.",
 	},
 	{
-		title: 'Stickers',
-		description: 'Stickers personalizados.',
-		image: '/stickers_FOT_1.webp',
-		url: '/calculadoras/stickers',
+		icon: "⚡",
+		title: "Entrega rápida",
+		description: "Trabajos realizados en tiempos reducidos según disponibilidad.",
 	},
 	{
-		title: 'Etiquetas',
-		description: 'Etiquetas autoadhesivas.',
-		image: '/etiquetas_FOT_1.webp',
-		url: '/calculadoras/etiquetas',
+		icon: "📦",
+		title: "Pedidos pequeños y grandes",
+		description: "Desde una sola impresión hasta producciones más grandes.",
 	},
+	{
+		icon: "💬",
+		title: "Presupuesto instantáneo",
+		description: "Calculá el precio online y consultá cualquier duda por WhatsApp.",
+	},
+];
+
+const faqs = [
+	{
+		question: "¿Cómo realizo un pedido?",
+		answer: "Calculá tu presupuesto online y luego envianos un mensaje por WhatsApp con los detalles y los archivos a imprimir.",
+	},
+	{
+		question: "¿Qué formatos de archivo aceptan?",
+		answer: "Aceptamos PDF, JPG, PNG y otros formatos de imagen habituales.",
+	},
+	{
+		question: "¿Cuánto demora la entrega?",
+		answer: "El tiempo de entrega depende del trabajo solicitado y la cantidad requerida.",
+	},
+	{
+		question: "¿Realizan pedidos pequeños?",
+		answer: "Sí, trabajamos tanto con pedidos pequeños como con cantidades mayores.",
+	},
+	{
+		question: "¿Puedo solicitar un presupuesto sin compromiso?",
+		answer: "Sí, podés calcular un precio estimado online o consultarnos directamente por WhatsApp.",
+	},
+	{
+		question: "¿Dónde se retiran los pedidos?",
+		answer: "La coordinación de entrega o retiro se realiza directamente por WhatsApp.",
+	},
+	{
+		question: "¿No encontrás el producto que buscás?",
+		answer: "Escribinos por WhatsApp y contanos qué necesitás. Podemos evaluar trabajos personalizados."
+	}
 ];
 ---
 
@@ -57,27 +106,139 @@ const products = [
 		</div>
 	</section>
 
-	<section id="galeria">
-		<h3 class="text-center font-bold">Galeria de trabajos</h3>
+	<section id="galeria" class="bg-gray-50 py-16">
+		<div class="mx-auto max-w-7xl px-4">
+			<p class="text-center text-sm font-semibold uppercase tracking-wider text-green-600">
+				Galería
+			</p>
+
+			<h2 class="mt-2 text-center text-3xl font-bold">
+				Trabajos realizados
+			</h2>
+
+			<p class="mx-auto mt-4 max-w-2xl text-center text-gray-600">
+				Algunos ejemplos de impresiones, stickers y etiquetas realizadas para clientes.
+			</p>
+
+			<div class="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+				{
+					gallery.map((image) => (
+						<GalleryImage
+							src={image}
+							alt="Trabajo realizado"
+						/>
+					))
+				}
+			</div>
+		</div>
 	</section>
 
-	<section>
-		<h3 class="text-center font-bold">Ventajas</h3>
-		<ul>
-			<li>Atencion personalizada</li>
-			<li>Entrega rapida</li>
-			<li>Pedidos pequenios y grandes</li>
-			<li>Presupuesto instantaneo</li>
-		</ul>
+	<section id="ventajas" class="py-16">
+		<div class="mx-auto max-w-7xl px-4">
+			<p class="text-center text-sm font-semibold uppercase tracking-wider text-green-600">
+				¿Por qué elegirnos?
+			</p>
+
+			<h2 class="mt-2 text-center text-3xl font-bold">
+				Ventajas de trabajar con nosotros
+			</h2>
+
+			<p class="mx-auto mt-4 max-w-2xl text-center text-gray-600">
+				Buscamos ofrecer una experiencia simple, rápida y personalizada para cada cliente.
+			</p>
+
+			<div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+				{
+					advantages.map((advantage) => (
+						<article class="rounded-xl border bg-white p-6 text-center shadow-md transition hover:shadow-lg">
+							<div class="text-4xl">
+								{advantage.icon}
+							</div>
+
+							<h3 class="mt-4 text-lg font-bold">
+								{advantage.title}
+							</h3>
+
+							<p class="mt-2 text-sm text-gray-600">
+								{advantage.description}
+							</p>
+						</article>
+					))
+				}
+			</div>
+		</div>
 	</section>
 
-	<section id="faq">
-		<h3 class="text-center font-bold">Preguntas frecuentes</h3>
+	<section id="faq" class="bg-gray-50 py-16">
+		<div class="mx-auto max-w-5xl px-4">
+			<p class="text-center text-sm font-semibold uppercase tracking-wider text-green-600">
+				Preguntas frecuentes
+			</p>
+
+			<h2 class="mt-2 text-center text-3xl font-bold">
+				Resolvemos tus dudas
+			</h2>
+
+			<p class="mx-auto mt-4 max-w-2xl text-center text-gray-600">
+				Estas son algunas de las consultas más habituales que recibimos.
+			</p>
+
+			<div class="mt-10 flex flex-col gap-4">
+				{
+					faqs.map((faq) => (
+						<details class="rounded-xl border bg-white p-5 shadow-sm transition hover:shadow-md">
+							<summary class="cursor-pointer font-semibold">
+								{faq.question}
+							</summary>
+
+							<p class="mt-3 text-sm leading-relaxed text-gray-600">
+								{faq.answer}
+							</p>
+						</details>
+					))
+				}
+			</div>
+		</div>
 	</section>
 
-	<section>
-		<h3 class="text-center font-bold">Listo para hacer tu pedido?</h3>
-		<button>Calcular precio</button>
-		<button>Escribir por Whatsapp</button>
+	<section class="py-16">
+		<div class="mx-auto max-w-5xl px-4">
+			<div
+				class="rounded-2xl bg-linear-to-b from-green-300 to-green-200 px-8 py-12 text-center shadow-md"
+			>
+				<p class="text-sm font-semibold uppercase tracking-wider text-green-700">
+					¿Listo para comenzar?
+				</p>
+
+				<h2 class="mt-2 text-3xl font-bold md:text-4xl">
+					Hacé tu pedido hoy mismo
+				</h2>
+
+				<p class="mx-auto mt-4 max-w-2xl text-gray-700">
+					Calculá tu presupuesto online o escribinos directamente por WhatsApp.
+					Estamos listos para ayudarte con tu próximo trabajo.
+				</p>
+
+				<div class="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+					<a
+						href="#productos"
+						class="rounded-lg bg-amber-300 px-6 py-3 font-semibold transition hover:bg-amber-400"
+					>
+						Calcular precio
+					</a>
+
+					<a
+						href="https://wa.me/549XXXXXXXXXX"
+						target="_blank"
+						class="rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition hover:bg-green-700"
+					>
+						Escribinos por WhatsApp
+					</a>
+					<p class="mt-6 text-sm text-gray-600">
+						📍 Punta Alta · Atención personalizada · Presupuesto sin compromiso
+					</p>
+				</div>
+			</div>
+		</div>
 	</section>
 </Layout>
