@@ -1,34 +1,85 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import CalculadoraImpresion from "../../components/calculadoras/CalculadoraImpresion";
+import GalleryImage from "../../components/GalleryImage.astro";
+
+const gallery = [
+  "/impresiones_FOT_1.webp",
+  "/impresiones_FOT_1.webp",
+  "/impresiones_FOT_1.webp",
+];
 
 const precios = {
   bn: {
-    simple: 10,
-    doble: 18,
+    simple: 150,
+    doble: 150,
   },
   color: {
-    simple: 20,
-    doble: 35,
+    simple: 200,
+    doble: 200,
   },
 };
 
 const anillados = [
   {
     maxHojas: 50,
-    precio: 500,
-  },
-  {
-    maxHojas: 100,
-    precio: 800,
-  },
-  {
-    maxHojas: 150,
     precio: 1200,
   },
+  {
+    maxHojas: 70,
+    precio: 1200,
+  }
 ];
 ---
 
 <Layout>
   <CalculadoraImpresion client:load anillados={anillados} precios={precios}></CalculadoraImpresion>
+  <section class="bg-gray-50 py-16">
+    <div class="mx-auto max-w-7xl px-4">
+      <p class="text-center text-sm font-semibold uppercase tracking-wider text-green-600">
+        Ejemplos
+      </p>
+
+      <h2 class="mt-2 text-center text-3xl font-bold">
+        Algunos trabajos realizados
+      </h2>
+
+      <p class="mx-auto mt-4 max-w-2xl text-center text-gray-600">
+        Impresiones en blanco y negro y color realizadas para estudiantes,
+        emprendedores y particulares.
+      </p>
+
+      <div class="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {
+          gallery.map((image) => (
+            <GalleryImage
+              src={image}
+              alt="Ejemplo de impresión"
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <section class="py-16">
+    <div class="mx-auto max-w-5xl px-4">
+      <div class="rounded-2xl bg-linear-to-b from-green-300 to-green-200 px-8 py-12 text-center shadow-md">
+        <h2 class="text-3xl font-bold">
+          ¿Listo para imprimir?
+        </h2>
+
+        <p class="mt-4 text-gray-700">
+          Enviá tus archivos por WhatsApp y coordinamos el trabajo.
+        </p>
+
+        <a
+          href="https://wa.me/549XXXXXXXXXX"
+          target="_blank"
+          class="mt-6 inline-block rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition hover:bg-green-700"
+        >
+          Enviar archivos por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
 </Layout>

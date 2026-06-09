@@ -5,15 +5,25 @@ export default function CalculadoraImpresion({ precios, anillados }) {
   const [modo, setModo] = useState("simple");
   const [cantidad, setCantidad] = useState(1);
   const [anillado, setAnillado] = useState(false);
+  // const precioAnillado = anillado
+  // ? anillados.find(a => cantidad <= a.maxHojas)?.precio ?? "No disponible"
+  // : 0;
+  // const precioImpresion = precios[color][modo] * cantidad;
+  const hojas =
+    modo === "simple"
+      ? Number(cantidad)
+      : Math.ceil(Number(cantidad) / 2);
+  const precioImpresion =
+    modo === "simple"
+      ? precios[color].simple * hojas
+      : precios[color].doble * hojas;
+      
   const precioAnillado = anillado
-  ? anillados.find(a => cantidad <= a.maxHojas)?.precio ?? 0
+  ? anillados.find(a => hojas <= a.maxHojas)?.precio ?? 0
   : 0;
-  const precioImpresion = precios[color][modo] * cantidad;
-const total = precioImpresion + precioAnillado;
+      
+  const total = precioImpresion + precioAnillado;
 
-  useEffect(() => {
-    console.log(color, modo, cantidad);
-  }, [color, modo, cantidad]);
   return (
     <article className="mx-auto my-16 max-w-4xl px-4">
       <div className="overflow-hidden rounded-xl border bg-white shadow-md">
@@ -88,6 +98,9 @@ const total = precioImpresion + precioAnillado;
               name="cantidad"
               id="cantidad"
             />
+            <p className="text-sm text-gray-500">
+                Hojas físicas: {hojas}
+            </p>
           </div>
 
           <div className="flex flex-col gap-2">
@@ -120,9 +133,15 @@ const total = precioImpresion + precioAnillado;
                     Anillado
                   </p>
 
-                  <p className="font-semibold">
-                    ${precioAnillado}
-                  </p>
+                  {precioAnillado === 0 ? (
+                    <p className="font-semibold">
+                      No disponible
+                    </p>
+                  ) : (
+                    <p className="font-semibold">
+                      ${precioAnillado}
+                    </p>
+                  )}
                 </>
               )
             }
