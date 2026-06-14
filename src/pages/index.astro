@@ -7,10 +7,28 @@ import GalleryImage from '../components/GalleryImage.astro';
 const products = [
 	{
 		title: 'Impresiones',
-		description: 'Impresiones A4 en blanco y negro o color.',
+		description: 'Impresiones A4 en blanco y negro o color. Con o sin anillado.',
 		image: '/impresiones_FOT_1.webp',
 		url: '/calculadoras/impresiones',
-	}
+		destacado: true,
+		tags: ['impresiones']
+	},
+	// {
+	// 	title: 'Stickers',
+	// 	description: 'Stickers en blanco y negro o color.',
+	// 	image: '/stickers_FOT_1.webp',
+	// 	url: '/calculadoras/stickers',
+	// 	destacado: true,
+	// 	tags: ['stickers']
+	// },
+	// {
+	// 	title: 'Etiquetas',
+	// 	description: 'Etiquetas en blanco y negro o color.',
+	// 	image: '/etiquetas_FOT_1.webp',
+	// 	url: '/calculadoras/etiquetas',
+	// 	destacado: false,
+	// 	tags: ['impresiones']
+	// }
 ];
 
 const gallery = [
@@ -91,6 +109,38 @@ const faqs = [
 				Calculá tu presupuesto online y realizá tu pedido de forma rápida
 				por WhatsApp.
 			</p>
+			<!-- <nav>
+				<ul class="mt-10 flex flex-wrap justify-center gap-4">
+					<li>
+						<button
+							class="button-nav-tags button-nav-tags-active cursor-pointer rounded-lg bg-amber-300 px-6 py-3 font-semibold transition hover:bg-amber-400"
+						>
+							Destacados
+						</button>
+					</li>
+					<li>
+						<button
+							class="button-nav-tags button-nav-tags-active cursor-pointer rounded-lg bg-amber-300 px-6 py-3 font-semibold transition hover:bg-amber-400"
+						>
+							Impresiones
+						</button>
+					</li>
+					<li>
+						<button
+							class="button-nav-tags button-nav-tags-active cursor-pointer rounded-lg bg-amber-300 px-6 py-3 font-semibold transition hover:bg-amber-400"
+						>
+							Stickers
+						</button>
+					</li>
+					<li>
+						<button
+							class="button-nav-tags button-nav-tags-active cursor-pointer rounded-lg bg-amber-300 px-6 py-3 font-semibold transition hover:bg-amber-400"
+						>
+							Todos
+						</button>
+					</li>
+				</ul>
+			</nav> -->
 			<div class="mt-10 mx-auto grid max-w-6xl gap-6 px-4 md:grid-cols-2 lg:grid-cols-4">
 				{
 					products.map((product) => (
@@ -106,7 +156,7 @@ const faqs = [
 		</div>
 	</section>
 
-	<section id="galeria" class="bg-gray-50 py-16">
+	<!-- <section id="galeria" class="bg-gray-50 py-16">
 		<div class="mx-auto max-w-7xl px-4">
 			<p class="text-center text-sm font-semibold uppercase tracking-wider text-green-600">
 				Galería
@@ -131,7 +181,7 @@ const faqs = [
 				}
 			</div>
 		</div>
-	</section>
+	</section> -->
 
 	<section id="ventajas" class="py-16">
 		<div class="mx-auto max-w-7xl px-4">
@@ -228,7 +278,7 @@ const faqs = [
 					</a>
 
 					<a
-						href="https://wa.me/549XXXXXXXXXX"
+						href="https://wa.me/5492932417209?text=Hola%20Rinc%C3%B3n%20Gr%C3%A1fico,%20quer%C3%ADa%20pedir%20presupuesto%20para:%0A%0AProducto:%20%0ACantidad:%20%0ADetalles:%20"
 						target="_blank"
 						class="rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition hover:bg-green-700"
 					>

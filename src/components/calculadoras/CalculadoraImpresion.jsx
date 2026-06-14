@@ -24,6 +24,23 @@ export default function CalculadoraImpresion({ precios, anillados }) {
       
   const total = precioImpresion + precioAnillado;
 
+  const mensaje = encodeURIComponent(
+    `Hola Rincón Gráfico, quería pedir presupuesto para una impresión A4:
+
+      Color: ${color === "bn" ? "Blanco y negro" : "Color"}.
+      Modo: ${modo === "simple" ? "Simple faz" : "Doble faz"}.
+      Páginas: ${cantidad}.
+      Hojas físicas: ${hojas}.
+      Anillado: ${anillado ? "Sí" : "No"}.
+
+      Total estimado: $${total}...
+
+      Gracias!
+    `
+  );
+
+  const whatsappUrl = `https://wa.me/5492932417209?text=${mensaje}`;
+
   return (
     <article className="mx-auto my-16 max-w-4xl px-4">
       <div className="overflow-hidden rounded-xl border bg-white shadow-md">
@@ -159,19 +176,24 @@ export default function CalculadoraImpresion({ precios, anillados }) {
 
           
 
-          <button
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="
               rounded-lg
-              bg-amber-300
+              bg-green-600
               px-6
               py-3
+              text-center
               font-semibold
+              text-white
               transition
-              hover:bg-amber-400
+              hover:bg-green-700
             "
           >
-            Hacé tu pedido por WhatsApp
-          </button>
+            🟢 Hacé tu pedido por WhatsApp
+          </a>
         </div>
       </div>
     </article>

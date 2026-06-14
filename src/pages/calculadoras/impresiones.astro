@@ -2,6 +2,10 @@
 import Layout from "../../layouts/Layout.astro";
 import CalculadoraImpresion from "../../components/calculadoras/CalculadoraImpresion";
 import GalleryImage from "../../components/GalleryImage.astro";
+import { getPreciosImpresion, getPreciosAnillado }from "../../lib/googleSheets";
+type Row = Record<string, string>;
+const preciosImpresion = await getPreciosImpresion() as Row[];
+const preciosAnillado = await getPreciosAnillado() as Row[];
 
 const gallery = [
   "/impresiones_FOT_1.webp",
@@ -9,32 +13,34 @@ const gallery = [
   "/impresiones_FOT_1.webp",
 ];
 
+// @ts-ignore
+
 const precios = {
   bn: {
-    simple: 150,
-    doble: 150,
+    simple: parseInt(preciosImpresion[0]["PVP Final"] ?? 0),
+    doble: parseInt(preciosImpresion[1]["PVP Final"] ?? 0)
   },
   color: {
-    simple: 200,
-    doble: 200,
+    simple: parseInt(preciosImpresion[2]["PVP Final"] ?? 0),
+    doble: parseInt(preciosImpresion[3]["PVP Final"] ?? 0)
   },
 };
 
 const anillados = [
   {
-    maxHojas: 50,
-    precio: 1200,
+    maxHojas: parseInt(preciosAnillado[0]["Cantidad Hojas"] ?? 0),
+    precio: parseInt(preciosAnillado[0]["PVP Final"] ?? 0),
   },
   {
-    maxHojas: 70,
-    precio: 1200,
+    maxHojas: parseInt(preciosAnillado[1]["Cantidad Hojas"] ?? 0),
+    precio: parseInt(preciosAnillado[1]["PVP Final"] ?? 0),
   }
 ];
 ---
 
 <Layout>
   <CalculadoraImpresion client:load anillados={anillados} precios={precios}></CalculadoraImpresion>
-  <section class="bg-gray-50 py-16">
+  <!-- <section class="bg-gray-50 py-16">
     <div class="mx-auto max-w-7xl px-4">
       <p class="text-center text-sm font-semibold uppercase tracking-wider text-green-600">
         Ejemplos
@@ -60,7 +66,7 @@ const anillados = [
         }
       </div>
     </div>
-  </section>
+  </section> -->
   <section class="py-16">
     <div class="mx-auto max-w-5xl px-4">
       <div class="rounded-2xl bg-linear-to-b from-green-300 to-green-200 px-8 py-12 text-center shadow-md">
@@ -73,7 +79,7 @@ const anillados = [
         </p>
 
         <a
-          href="https://wa.me/549XXXXXXXXXX"
+          href="https://wa.me/5492932417209?text=Hola%20Rinc%C3%B3n%20Gr%C3%A1fico,%20quer%C3%ADa%20pedir%20presupuesto%20para:%0A%0AProducto:%20%0ACantidad:%20%0ADetalles:%20"
           target="_blank"
           class="mt-6 inline-block rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition hover:bg-green-700"
         >
